@@ -9,9 +9,31 @@
 <body>
     <header> Taller JavaScript </header>
     <div align = "center">
+        <br>
         <button type="button" onclick='pegarleALaApi()'>Click on me</button>
-    </div>
+        <br><br>
+        <textarea id = "json" name="campoALlenar" rows="10" cols="30">El resultado del json</textarea>
+        <br>
+        <br>
+        <header> Ejercicio mejorado </header>
 
+        <label> Opcion: </label>
+        <select name="opcionesJson" id="opcionesJson">
+        
+        <option value="1" > Usuario Id </option>
+        <option value="1" > id </option>
+        <option value="delectus aut autem" > Titulo </option>
+        <option value="false" > Completado </option>
+
+        </select>
+
+        <button type="button" onclick='seleccionarValorDeSelect()'> Mostrar en text area </button>
+        <br><br>
+        <textarea id = "json2" name="campoALlenar2" rows="10" cols="30">El resultado la opcion elegida, esto está re harcodeado</textarea>
+
+
+
+    </div>
 
     <script type="text/javascript" src="js/app.js"></script>
 </body>
