@@ -1,0 +1,278 @@
+CREATE DATABASE `BaseDeDatos`
+
+USE BaseDeDatos;
+CREATE TABLE `Proveedor` (
+	`codProv` INT NOT NULL,
+	`ciudad` TEXT,
+	`nombre` TEXT ,
+	`domicilio` TEXT ,
+	PRIMARY KEY (`codProv`)
+);
+
+CREATE TABLE `Material` (
+	`codMat` INT NOT NULL,
+	`descripcion` TEXT ,
+	PRIMARY KEY (codMat)
+);
+
+CREATE TABLE `Articulo` (
+	`codArt` INT NOT NULL,
+	`descripcion` TEXT ,
+	`precio` INT,
+	PRIMARY KEY(codArt)
+);
+
+CREATE TABLE `almacen`(
+	`nro` INT NOT NULL AUTO_INCREMENT,
+	`responsable` TEXT,
+	PRIMARY KEY (`nro`)
+);
+
+CREATE TABLE `provisto_por`(
+	`codMat` INT,
+	`codProv` INT,
+	FOREIGN KEY (codMat) REFERENCES `Material`(codMat),
+	FOREIGN KEY (codProv) REFERENCES `Proveedor`(codProv)
+);
+
+CREATE TABLE `compuesto_por` (
+	`codArt` INT,
+	`codMat` INT,
+	FOREIGN KEY (codArt) REFERENCES `Articulo`(codArt),
+	FOREIGN KEY (codMat) REFERENCES `Material`(codMat)
+);
+
+CREATE TABLE `tiene`(
+	`nro` INT,
+	`codArt` INT,
+	FOREIGN KEY (nro) REFERENCES `almacen`(nro),
+	FOREIGN KEY (codArt) REFERENCES `Articulo`(codArt)
+);
+
+/*CARGA DE MATERIALES*/
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('1','harina 0000');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('2','azucar');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('3',' m1');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('4','huevos');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('5','manteca');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('6','ricota');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('7','fecula de maiz');
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('8','bandeja' );
+INSERT INTO`MATERIAL`(`codMat`,`descripcion`)VALUES('123','aceite');
+
+
+/*CARGA DE ARTICULOS*/
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('1','A','5');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('2','B','50');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('3','pepas X 250 GRS','50');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('4','PASTA FROLA','150');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('5','RICOTA','300');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('6','LEMON PIE','300');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('7','BUDIN DE VAINILLA','150');
+INSERT INTO`ARTICULO`(`codArt`,`descripcion`,`precio`)VALUES('8','torta de aceite','150');
+
+
+/*CARGA PROVEEDORES*/
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('1420','cañuelas','garay 1322','san isidro');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('2020','tres arroyos','recalde 1520','tortuguitas');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('1030','granja del Sol','santiago del estero 2020','boulogne');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('25','lodiser','pampa 1515','CABA');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('1515','perez' ,'ocampo 12','cordoba');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('707','perez' ,'salinas 2','pergamino');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('414','gonzalez','peron 1710','la plata');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('10','gutierrez','salina 333','la plata');
+INSERT INTO`PROVEEDOR`(`codProv`,`Nombre`,`Domicilio`,`Ciudad`)VALUES('15','pereyra','marconi 170','rosario');
+/* CARGA ALMACEN*/
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('1','gonzalez');
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('2','rodriguez');
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('3','perez');
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('4','garcia');
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('5','martin gomez');
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('6','acosta');
+INSERT INTO`ALMACEN`(`Nro`,`Responsable`)VALUES('7','lopez');
+/* CARGA PROVISTO POR*/
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('1','1420');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('2','2020');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('3','1030');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('4','25');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('5','1515');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('6','707');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('7','414');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('8','10');
+INSERT INTO`Provisto_por`(`codMat`,`codProv`)VALUES('123','10');
+/* CARGA TIENE*/
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('1','1');
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('2','2');
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('3','3');
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('4','4');
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('5','5');
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('6','6');
+INSERT INTO`Tiene`(`Nro`,`codArt`)VALUES('7','7');
+
+/* carga compuesto por*/
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('1','1');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('2','1');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('3','3');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('4','3');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('5','5');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('6','5');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('7','5');
+INSERT INTO`Compuesto_por`(`codArt`,`codMat`)VALUES('8','123');
+
+
+/*ALTER TABLE `provisto_por`
+	ADD CONSTRAINT `FK_codigo_Material` FOREIGN KEY (`codMat`) REFERENCES `Material` (`codMat`);
+	
+ALTER TABLE `provisto_por`
+	ADD CONSTRAINT `FK_codigo_Proveedor` FOREIGN KEY (`codProv`) REFERENCES `Proveedor` (`codProv`);
+	ADD CONSTRAINT `FK_codigo_Material` FOREIGN KEY (`codMat`) REFERENCES `Material` (`codMat`);
+	
+ALTER TABLE `provisto_por`
+	ADD CONSTRAINT `FK_codigo_material` FOREIGN KEY (`codMat`) REFERENCES `Material` (`codMat`),
+	ADD CONSTRAINT `FK_codigo_proveedor` FOREIGN KEY (`codProv`) REFERENCES `Proveedor` (`codProv`);
+	
+ALTER TABLE `compuesto_por`
+	ADD CONSTRAINT `FK_codigo_articulo` FOREIGN KEY (`codArt`) REFERENCES `articulo` (`codArt`),
+	ADD CONSTRAINT `FK_codigo_material` FOREIGN KEY (`codMat`) REFERENCES `material` (`codMat`);
+
+--No anda el PK_nro
+ALTER TABLE `tiene`
+	ADD CONSTRAINT `FK_numero` FOREIGN KEY (`nro`) REFERENCES `almacen` (`nro`);
+	
+ALTER TABLE `tiene`
+	ADD CONSTRAINT `FK_codigo_articulo` FOREIGN KEY (`codArt`) REFERENCES `articulo` (`codArt`);
+
+
+
+INSERT INTO `proveedor`(`codProv`, `nombre`, `domicilio`, `ciudad`) VALUES ('7', 'Joaquin', 'Pettinari', 'Castelar'); 
+INSERT INTO `proveedor`(`codProv`, `nombre`, `domicilio`, `ciudad`) VALUES ('15', 'Silvina', 'Alvarez', 'La Plata');
+INSERT INTO `proveedor`(`codProv`, `nombre`, `domicilio`, `ciudad`) VALUES ('10', 'Jose', 'Luis', 'La Plata');
+
+INSERT INTO `material`(`codMat`, `descripcion`) VALUES ('2312', 'Enduido');
+INSERT INTO `material`(`codMat`, `descripcion`) VALUES ('2313', 'Cemento');
+INSERT INTO `material`(`codMat`, `descripcion`) VALUES ('2314', 'CualquierCosa');
+
+INSERT INTO `articulo`(`codArt`, `descripcion`, `precio`) VALUES ( '123', 'Ladrillos', '8'); 
+INSERT INTO `articulo`(`codArt`, `descripcion`, `precio`) VALUES ( '124', 'Pala', '3');
+INSERT INTO `articulo`(`codArt`, `descripcion`, `precio`) VALUES ( '125', 'Herramientas', '11');
+
+INSERT INTO `almacen` (`responsable`) VALUES ('Joaco');
+INSERT INTO `almacen` (`responsable`) VALUES ('Carlos');
+INSERT INTO `almacen` (`responsable`) VALUES ('Eduardo');
+
+INSERT INTO `tiene` (`nro`, `codArt`) VALUES ('3', '124');
+INSERT INTO `tiene` (`nro`, `codArt`) VALUES ('2', '123');
+INSERT INTO `tiene` (`nro`, `codArt`) VALUES ('1', '125');
+
+INSERT INTO `compuesto_por` (`codArt`, `codMat`) VALUES ('124', '2312');
+INSERT INTO `compuesto_por` (`codArt`, `codMat`) VALUES ('123', '2313');
+INSERT INTO `compuesto_por` (`codArt`, `codMat`) VALUES ('125', '2314');
+
+INSERT INTO `basededatos`.`provisto_por` (`codMat`, `codProv`) VALUES ('2312', '15');
+INSERT INTO `basededatos`.`provisto_por` (`codMat`, `codProv`) VALUES ('2314', '10');
+INSERT INTO `basededatos`.`provisto_por` (`codMat`, `codProv`) VALUES ('2313', '7');*/
+
+--Consulta 1  -> Listar los nombres de los proveedores de la ciudad de La Plata.
+SELECT `nombre` AS NOMBRE_CLIENTE FROM `proveedor` WHERE ciudad = "La Plata"
+
+--Consulta 2   -> Listar los números de artículos cuyo precio sea inferior a $10.
+SELECT `codArt` AS CODIGO_ARTICULO FROM `articulo` WHERE precio < '10'
+
+--Consulta 3  ->  Listar los responsables de los almacenes.
+SELECT `responsable` AS RESPONSABLE FROM `almacen` 
+
+--Consulta 4  -> Listar los códigos de los materiales que provea el proveedor 10 y no los provea el proveedor 15.
+SELECT `codMat` AS CODIGO_MATERIAL FROM `proveedor`, `provisto_por` 
+WHERE `provisto_por`.codProv = '10' AND `provisto_por`.codProv <> '15'
+
+--Consulta 5  -> Listar los números de almacenes que almacenan el artículo A.
+SELECT `nro` AS ALMACEN_CONTIENE_A FROM `tiene`, `articulo`
+WHERE `articulo`.descripcion LIKE 'A%' AND `tiene`.codArt = `articulo`.codArt
+
+--Consulta 6  -> Listar los proveedores de Pergamino que se llamen Pérez.
+SELECT * FROM `proveedor`
+WHERE ciudad = 'Pergamino' AND nombre = 'Perez'
+
+--Consulta 7  -> Listar los almacenes que contienen los artículos A y los artículos B (ambos).
+SELECT `nro` AS ALMACEN_CONTIENE_A FROM `tiene`, `articulo`
+WHERE (`articulo`.descripcion LIKE 'A%' OR `articulo`.descripcion LIKE 'B%') AND `tiene`.codArt = `articulo`.codArt
+
+--Consulta 8  ->  Listar los artículos que cuesten más de $100 o que estén compuestos por el material M1.
+SELECT * FROM `articulo`, `compuesto_por`,`material`
+WHERE (`articulo`.precio >= '100' OR `material`.descripcion LIKE 'M1%') 
+AND `compuesto_por`.codArt = `articulo`.codArt
+AND `compuesto_por`.codMat = `material`.codMat
+
+
+--Consulta 9  -> Listar los materiales, código y descripción, provistos por proveedores de la ciudad de Rosario.
+SELECT `proveedor`.`nombre` AS NOMBRE_PROVEEDOR, `descripcion` AS DESCRIPCION, `provisto_por`.`codMat` AS CODIGO_MATERIAL 
+FROM `proveedor`, `provisto_por`, `material`
+WHERE `proveedor`.ciudad = 'rosario'
+AND `proveedor`.codProv = `provisto_por`.codProv
+AND `provisto_por`.codMat = `material`.codMat
+
+--Consulta 10 -> Listar el código, descripción y precio de los artículos que se almacenan en A1.
+SELECT `articulo`.`codArt` AS CODIGO_ARTICULO, `articulo`.`descripcion` AS DESCRIPCION_ARTICULO, `articulo`.precio AS PRECIO
+FROM `articulo`, `tiene`, `Almacen`
+WHERE `almacen`.nro = '1'
+AND `articulo`.codArt = `tiene`.codArt
+AND `tiene`.nro = `almacen`.nro
+
+--Consulta 11 ->  Listar la descripción de los materiales que componen el artículo B.
+SELECT `material`.descripcion AS DESCRIPCION
+FROM `material`, `compuesto_por`, `articulo`
+WHERE `articulo`.descripcion LIKE 'B%'
+AND `articulo`.codArt = `compuesto_por`.codArt
+AND `compuesto_por`.codMat = `material`.codMat
+
+--Consulta 12 -> Listar los nombres de los proveedores que proveen los materiales al almacén que Martín Gómez tiene a su cargo.
+SELECT DISTINCT `proveedor`.codProv AS CODIGO_PROVEEDOR, `proveedor`.nombre AS NOMBRE_PROVEEDOR
+FROM `proveedor`,`provisto_por`, `material`,`compuesto_por`,`articulo`,`tiene`,`almacen`
+WHERE `almacen`.responsable = 'Martin Gomez'
+AND `proveedor`.codProv = `provisto_por`.codProv
+AND `provisto_por`.codMat = `material`.codMat
+AND `material`.codMat = `compuesto_por`.codMat
+AND `compuesto_por`.codArt = `articulo`.codArt
+AND `articulo`.codArt = `tiene`.codArt
+AND `tiene`.nro = `almacen`.nro
+
+--Consulta 13 -> .Listar códigos y descripciones de los artículos compuestos por al menos un material provisto por el proveedor López.
+SELECT `articulo`.codArt AS CODIGO_ARTICULO, `articulo`.descripcion AS DESCRIPCION
+FROM `proveedor`, `provisto_por`,`material`,`compuesto_por`,`articulo`
+WHERE `proveedor`.nombre = 'Lopez'
+AND `proveedor`.codProv = `provisto_por`.codProv
+AND `provisto_por`.codMat = `material`.codMat
+AND `material`.codMat = `compuesto_por`.codMat
+AND `compuesto_por`.codArt = `articulo`.codArt
+
+--Consulta 14 -> Hallar los códigos y nombres de los proveedores que proveen al menos un material que se usa en algún artículo cuyo precio es mayor a $100.
+SELECT DISTINCT `proveedor`.codProv AS CODIGO_PROVEEDOR, `proveedor`.nombre AS NOMBRE_PROVEEDOR
+FROM `proveedor`, `provisto_por`,`material`,`compuesto_por`,`articulo`
+WHERE `articulo`.precio > '100'
+AND `proveedor`.codProv = `provisto_por`.codProv
+AND `provisto_por`.codMat = `material`.codMat
+AND `material`.codMat = `compuesto_por`.codMat
+AND `compuesto_por`.codArt = `articulo`.codArt
+
+--Consulta 15 -> Listar los números de almacenes que tienen todos los artículos que incluyen el material con código 123.
+SELECT `almacen`.nro AS NUMERO_ALMACEN
+FROM `almacen`, `tiene`, `articulo`, `compuesto_por`,`material`
+WHERE `material`.codMat = '123'
+AND `material`.codMat = `compuesto_por`.codMat
+AND `compuesto_por`.codArt = `articulo`.codArt
+AND `articulo`.codArt = `tiene`.codArt
+AND `tiene`.nro = `almacen`.nro
+
+
+
+
+
+
+
+
+
+
+
+
+
+
