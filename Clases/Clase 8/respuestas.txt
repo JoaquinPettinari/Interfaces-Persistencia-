@@ -1,0 +1,31 @@
+1) Explique la arquitectura centralizada y la Cliente Servidor.
+
+Sistema centralizado:
+
+Un sistema de base de datos centralizado son aquellos son aquellos que se ejecutan en	un único sistema informático sin	interaccionar con ninguna otra computadora.
+
+Una computadora moderna de propósito general consiste en una o unas pocas unidades centrales de procesamiento y un número determinado de controladores para los dispositivos que se encuentren conectados a través de un bus común, el cual proporciona acceso a la memoria compartida . Las CPU poseen memorias caché locales donde se almacenan copias de ciertas partes de la memoria para acelerar el acceso a los datos.
+
+En esta se distinguen dos formas de utilizar las computadoras:
+    Sistema Monousuario: una persona dispone de una sola CPU, que trabaja con un único sistema operativo.
+    Sistema Multiusuario: Dispone de varias CPU y trabaja con un sistema operativo multiusuario, se encarga de dar servicio a un gran número de usuarios que están conectados al sistema a través de terminales
+
+Sistema Cliente - Servidor:
+
+Es un diseño de software en que las tareas se reparten entre los proveedores de recursos o servicios (servidores) y los clientes. Un cliente realiza una petición a otro programa, y el servidor le da una respuesta. Un ejemplo puede ser el correo electrónico.
+
+2) Explique que tipo de arquitectura de servidores existen.
+
+No se 
+
+3)  Explique a que hace referencia en una arquitectura compartida el termino
+“Memoria Compartida, Disco Compartido, Sin compartimiento y Jerarquía”
+
+
+- Memoria compartida: Todos los procesadores comparten una memoria común
+- Disco compartido: Todos los procesadores comparten un conjunto de discos comun
+- Sin comportamiento: Los procesadores no comparten ni memoria ni disco
+- Jerárquica; Este modelo es un híbrido de las arquitecturas anteriores
+
+Es un tipo de arquitectura para máquinas paralelas
+
