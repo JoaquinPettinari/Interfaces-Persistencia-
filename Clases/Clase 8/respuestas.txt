@@ -31,11 +31,11 @@ de la cual los clientes pueden crear, modificar, leer y borrar archivos.
 3)  Explique a que hace referencia en una arquitectura compartida el termino
 “Memoria Compartida, Disco Compartido, Sin compartimiento y Jerarquía”
 
+Memoria compartida: En una arquitectura de memoria compartida los procesadores y los discos tienen acceso a una memoria común, normalmente a través de un bus o de una red de interconexión. El beneﬁcio de la memoria compartida es la extremada eﬁciencia en cuanto a la comunicación entre procesadores. Cualquier procesador puede acceder a los datos de la memoria compartida sin necesidad de la intervención del software.
+Las arquitecturas de memoria compartida suelen dotar a cada procesador de una memoria caché muy grande para evitar las referencias a la memoria compartida siempre que sea posible. No obstante, en la caché no podrán estar todos los datos y no podrá evitarse el acceso a la memoria compartida.
 
-- Memoria compartida: Todos los procesadores comparten una memoria común
-- Disco compartido: Todos los procesadores comparten un conjunto de discos comun
-- Sin comportamiento: Los procesadores no comparten ni memoria ni disco
-- Jerárquica; Este modelo es un híbrido de las arquitecturas anteriores
+Disco compartido: En el modelo de disco compartido todos los procesadores pueden acceder directamente a todos los discos a través de una red de interconexión, pero los procesadores tienen memorias privadas.Las arquitecturas de disco compartido ofrecen dos ventajas respecto de las de memoria compartida. Primero, el bus de la memoria deja de ser un cuello de botella ya que cada procesador dispone de memoria propia. Segundo, esta arquitectura ofrece una forma barata para proporcionar una cierta tolerancia ante fallos: si falla un procesador (o su memoria) los demás procesadores pueden hacerse cargo de sus tareas ya que la base de datos reside en los discos, a los cuales tienen acceso todos los procesadores.
 
-Es un tipo de arquitectura para máquinas paralelas
+Sin compartimiento: En un sistema sin compartimiento cada nodo de la máquina consta de un procesador, memoria y uno o más discos. Los procesadores de un nodo pueden comunicarse con un procesador de otro nodo utilizando una red de interconexión de alta velocidad. Un nodo funciona como el servidor de los datos almacenados en los discos que posee. El modelo sin compartimiento salva el inconveniente de requerir que todas las operaciones de E/S vayan a través de una única red de interconexión, ya que las referencias a los discos locales son servidas por los discos locales de cada procesador; solamente van por la red las peticiones, los accesos a discos remotos y las relaciones de resultados. 
 
+Jerarquía: La arquitectura jerárquica combina las características de las arquitecturas de memoria compartida, de disco compartido y sin compartimiento. A alto nivel el sistema está formado por nodos que están conectados mediante una red de interconexión y que no comparten ni memoria ni discos. Así, el nivel más alto es una arquitectura sin compartimiento. Cada nodo del sistema podría ser en realidad un sistema de memoria compartida con algunos procesadores. Alternativamente, cada nodo podría ser un sistema de disco compartido y cada uno de estos sistemas de disco compartido podría ser a su vez un sistema de memoria compartida.
