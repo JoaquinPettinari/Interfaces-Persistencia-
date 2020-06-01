@@ -16,7 +16,17 @@ Es un diseño de software en que las tareas se reparten entre los proveedores de
 
 2) Explique que tipo de arquitectura de servidores existen.
 
-No se 
+Los sistemas servidores de transacciones, también llamados sistemas servidores de consultas,
+proporcionan una interfaz a través de la cual los clientes pueden enviar peticiones para realizar
+una acción que el servidor ejecutará y cuyos resultados se devolverán al cliente. Normalmente,
+las máquinas cliente envían las transacciones a los sistemas servidores, lugar en el que estas
+transacciones se ejecutan, y los resultados se devuelven a los clientes que son los encargados de
+visualizar los datos. Las peticiones se pueden especificar utilizando SQL o mediante la interfaz
+de una aplicación especializada. 
+
+Los sistemas servidores de datos permiten a los clientes interaccionar con los servidores realizando peticiones de lectura o modificación de datos en unidades tales como archivos o páginas.
+Por ejemplo, los servidores de archivos proporcionan una interfaz de sistema de archivos a través
+de la cual los clientes pueden crear, modificar, leer y borrar archivos. 
 
 3)  Explique a que hace referencia en una arquitectura compartida el termino
 “Memoria Compartida, Disco Compartido, Sin compartimiento y Jerarquía”
